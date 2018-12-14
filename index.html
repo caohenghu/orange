@@ -11,54 +11,64 @@
         * {
             margin: 0;
             padding: 0;
+            border: none;
+            outline: none;
         }
         input {
             height: 30px;
+            padding: 0 6px;
             border: 1px solid #ccc;
         }
-        li {
-            list-style: none;
+        tr {
             height: 36px;
             line-height: 36px;
         }
-        .space {
-            height: 48px;
+        tr td:first-child {
+            text-align: right;
         }
-        .price {
-            height: 30px;
-            line-height: 30px;
+        #app {
+            /* 不让微信防诈骗提示挡住 */
+            padding: 48px 6px; 
         }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div class="space"></div>
-        <ul>
-            <li>
-                <span>17斤箱数：</span>
-                <input type="text" v-model.number.trim="orangeBigCount">
-            </li>
-            <li>
-                <span>10斤箱数：</span>
-                <input type="text" v-model.number.trim="orangeSmallCount">
-            </li>
-            <li>
-                <span>橙子价格：</span>
-                <input type="text" v-model.number.trim="orangePrice">
-            </li>
-            <li>
-                <span>大箱子价格：</span>
-                <input type="text" v-model.number.trim="boxBigPrice">
-            </li>
-            <li>
-                <span>小箱子价格：</span>
-                <input type="text" v-model.number.trim="boxSmallPrice">
-            </li>
-        </ul>
-        <div class="price">橙子价格：{{ orangeTotalPrice }}</div>
-        <div class="price">箱子子价格：{{ boxTotalPrice }}</div>
-        <div class="price">总价：{{ totalPrice }}</div>
+        <table>
+            <tr>
+                <td>17斤箱数：</td>
+                <td><input type="text" v-model.number.trim="orangeBigCount"></td>
+            </tr>
+            <tr>
+                <td>10斤箱数：</td>
+                <td><input type="text" v-model.number.trim="orangeSmallCount"></td>
+            </tr>
+            <tr>
+                <td>橙子价格：</td>
+                <td><input type="text" v-model.number.trim="orangePrice"></td>
+            </tr>
+            <tr>
+                <td>大箱子价格：</td>
+                <td><input type="text" v-model.number.trim="boxBigPrice"></td>
+            </tr>
+            <tr>
+                <td>小箱子价格：</td>
+                <td><input type="text" v-model.number.trim="boxSmallPrice"></td>
+            </tr>
+            <tr>
+                <td>橙子价格：</td>
+                <td>{{ orangeTotalPrice }}</td>
+            </tr>
+            <tr>
+                <td>箱子价格：</td>
+                <td>{{ boxTotalPrice }}</td>
+            </tr>
+            <tr style="color: red">
+                <td>总价：</td>
+                <td>{{ totalPrice }}</td>
+            </tr>
+        </table>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
     <script>
