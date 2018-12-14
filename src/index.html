@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>橙子计算器</title>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <span>17斤箱数：</span>
+            <input type="text" v-model.number.trim="orangeBigCount">
+        </div>
+        <div>
+            <span>10斤箱数：</span>
+            <input type="text" v-model.number.trim="orangeSmallCount">
+        </div>
+        <div>
+            <span>橙子价格：</span>
+            <input type="text" v-model.number.trim="orangePrice">
+        </div>
+        <div>
+            <span>大箱子价格：</span>
+            <input type="text" v-model.number.trim="boxBigPrice">
+        </div>
+        <div>
+            <span>小箱子价格：</span>
+            <input type="text" v-model.number.trim="boxSmallPrice">
+        </div>
+        <div>总价：{{ totalPrice }}</div>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    orangeBigCount: null,
+                    orangeSmallCount: null,
+                    orangePrice: 2.8,
+                    boxBigPrice: 4.5,
+                    boxSmallPrice: 3.5
+                }
+            },
+            computed: {
+                orangeTotalPrice() {
+                    return (this.orangeBigCount + this.orangeSmallCount) * this.orangePrice
+                },
+                boxTotalPrice() {
+                    return this.orangeBigCount * this.boxBigPrice + this.orangeSmallCount * this.boxSmallPrice
+                },
+                totalPrice() {
+                    return this.orangeTotalPrice + this.boxTotalPrice
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
