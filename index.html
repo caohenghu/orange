@@ -3,34 +3,64 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>橙子计算器</title>
+    <link href="https://cdn.bootcss.com/modern-normalize/0.5.0/modern-normalize.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        input {
+            border: 1px solid #ccc;
+        }
+        li {
+            list-style: none;
+            height: 30px;
+            line-height: 30px;
+        }
+        .title {
+            height: 36px;
+            line-height: 36px;
+            font-size: 24px;
+        }
+        .price {
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
 </head>
 
 <body>
     <div id="app">
-        <div>
-            <span>17斤箱数：</span>
-            <input type="text" v-model.number.trim="orangeBigCount">
-        </div>
-        <div>
-            <span>10斤箱数：</span>
-            <input type="text" v-model.number.trim="orangeSmallCount">
-        </div>
-        <div>
-            <span>橙子价格：</span>
-            <input type="text" v-model.number.trim="orangePrice">
-        </div>
-        <div>
-            <span>大箱子价格：</span>
-            <input type="text" v-model.number.trim="boxBigPrice">
-        </div>
-        <div>
-            <span>小箱子价格：</span>
-            <input type="text" v-model.number.trim="boxSmallPrice">
-        </div>
-        <div>总价：{{ totalPrice }}</div>
+        <div class="title">橙子计算器</div>
+        <ul>
+            <li>
+                <span>17斤箱数：</span>
+                <input type="text" v-model.number.trim="orangeBigCount">
+            </li>
+            <li>
+                <span>10斤箱数：</span>
+                <input type="text" v-model.number.trim="orangeSmallCount">
+            </li>
+            <li>
+                <span>橙子价格：</span>
+                <input type="text" v-model.number.trim="orangePrice">
+            </li>
+            <li>
+                <span>大箱子价格：</span>
+                <input type="text" v-model.number.trim="boxBigPrice">
+            </li>
+            <li>
+                <span>小箱子价格：</span>
+                <input type="text" v-model.number.trim="boxSmallPrice">
+            </li>
+        </ul>
+        <br>
+        <div class="price">橙子价格：{{ orangeTotalPrice }}</div>
+        <div class="price">箱子子价格：{{ boxTotalPrice }}</div>
+        <div class="price">总价：{{ totalPrice }}</div>
     </div>
     <script src="https://cdn.bootcss.com/vue/2.5.17/vue.min.js"></script>
     <script>
@@ -40,6 +70,8 @@
                 return {
                     orangeBigCount: null,
                     orangeSmallCount: null,
+                    orangeBigWeight: 17,
+                    orangeSmallWeight: 10,
                     orangePrice: 2.8,
                     boxBigPrice: 4.5,
                     boxSmallPrice: 3.5
@@ -47,13 +79,13 @@
             },
             computed: {
                 orangeTotalPrice() {
-                    return (this.orangeBigCount + this.orangeSmallCount) * this.orangePrice
+                    return ((this.orangeBigCount * this.orangeBigWeight + this.orangeSmallCount * this.orangeSmallWeight) * this.orangePrice).toFixed(2)
                 },
                 boxTotalPrice() {
-                    return this.orangeBigCount * this.boxBigPrice + this.orangeSmallCount * this.boxSmallPrice
+                    return (this.orangeBigCount * this.boxBigPrice + this.orangeSmallCount * this.boxSmallPrice).toFixed(2)
                 },
                 totalPrice() {
-                    return this.orangeTotalPrice + this.boxTotalPrice
+                    return Number(this.orangeTotalPrice) + Number(this.boxTotalPrice)
                 }
             }
         })
