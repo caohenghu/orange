@@ -13,17 +13,16 @@
             padding: 0;
         }
         input {
+            height: 30px;
             border: 1px solid #ccc;
         }
         li {
             list-style: none;
-            height: 30px;
-            line-height: 30px;
-        }
-        .title {
             height: 36px;
             line-height: 36px;
-            font-size: 24px;
+        }
+        .space {
+            height: 48px;
         }
         .price {
             height: 30px;
@@ -34,7 +33,7 @@
 
 <body>
     <div id="app">
-        <div class="title">橙子计算器</div>
+        <div class="space"></div>
         <ul>
             <li>
                 <span>17斤箱数：</span>
@@ -57,7 +56,6 @@
                 <input type="text" v-model.number.trim="boxSmallPrice">
             </li>
         </ul>
-        <br>
         <div class="price">橙子价格：{{ orangeTotalPrice }}</div>
         <div class="price">箱子子价格：{{ boxTotalPrice }}</div>
         <div class="price">总价：{{ totalPrice }}</div>
