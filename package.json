@@ -1,22 +1,16 @@
 {
-  "name": "hu-orange",
+  "name": "orange",
   "version": "1.0.0",
   "description": "",
-  "devDependencies": {
-    "eslint": "^5.10.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/caohenghu/hu-orange.git"
+    "url": "https://github.com/caohenghu/orange.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/caohenghu/hu-orange/issues"
+    "url": "https://github.com/caohenghu/orange/issues"
   },
-  "homepage": "https://github.com/caohenghu/hu-orange#readme"
+  "homepage": "https://github.com/caohenghu/orange#readme"
 }
